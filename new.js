@@ -1,5 +1,7 @@
 
 function additem(){
+    let popcar =document.getElementById("apper") 
+    popcar.style.display="none"
     let head = document.getElementById("head")
     let rowsdone =document.getElementById(`additem`)
     let pop1 =document.getElementById("todono")  
@@ -11,14 +13,15 @@ function additem(){
     // let backgr =document.getElementById("opacitych")  
     
     head.style.opacity=.1;
-    // backgr.style.display="none"
-    // document.body.style.opacity=.1
+    head.innerHTML=`<span class="bold" >TASKS</span> LIST
+    <spam class="add">
+        <span class="circle" onclick="additem()" id="additem">+</span> Add Item</spam>          `;
     pop1.innerHTML=`
-    <nav  class="addview" >
+    <nav  class="addview"  >
     <nav>Add New List</nav><br>
     <input type="text" class="tex" id="texts" placeholder="Add New List">
     <nav class="ac">
-    <button onclick="card1()" id="card1" >ADD</button>
+    <button onclick="card1()"  id="card1" >ADD</button>
     <button onclick="cancel()" >Cancel</button></nav>
 </nav>`
     // document.body.style.backgroundColor="red"
@@ -31,6 +34,7 @@ function additem(){
 let data=[];
 
 function card1(){
+    
     let head = document.getElementById("head")
     head.style.opacity=1;
     let cards = document.getElementById("card")
@@ -43,6 +47,7 @@ function card1(){
         if (newtex) {
         data.push(item);
         addui();
+        // addwinback();
         } else  {
         alert("Please  enter the Card Title ☺️");
          }
@@ -59,32 +64,163 @@ function card1(){
              
          }
          function addui() {
-        
+           
             let popcards =document.getElementById("card") 
+            popcards.style.display="flex"
             let coadop ="";  
                   
-  for ( let index = 0; index < data.length; index++) {
-    console.log(index);
+  for ( let index = 0; index < data.length; index ++) {
+
     if(index <= data.length){
-        console.log(index);
-        console.log("dl",data.length);
-        console.log("REMOVEid",data[index].id);
-        console.log("REMOVEid",data[index].title);
-coadop +=`
-<nav class="cards" id="cd${data[index].id}"> ${ data[index].title}<hr>
+console.log(data[index].title);
+// console.log("l "+data.length);
+// console.log(index);
+titl =data[index].title;
+id1=data[index].id;
+
+
+coadop =`
+<nav class="cards" id="cd${data[index].id}">
+<p id="${titl}" onclick="openwindow(${id1},${titl})"> ${data[index].title}</p><hr>
 <p id="addtk${data[index].id}"><p>
 <span class="c1 c2" id="del${data[index].id}"  onclick="delcard(${data[index].id})">
 d</span>
-<span class="c1" id="addtask${data[index].id}" onclick="addtask(${data[index].id})">+</span></nav>`
+<span class="c1" id="${data[index].id}" id="addtask${data[index].id}" onclick="addtask(${data[index].id})">+</span></nav>`
 
     }
    
   }
-  popcards.innerHTML=coadop
+
+  popcards.innerHTML +=coadop
 
 }
- console.log("rrrrrrrrrrrrrrrrrrrrrrrr",item.id);
+
 }
+
+
+
+
+
+function openwindow(id,tit){
+    console.log(id,tit.id);
+    let head = document.getElementById("head")
+    // head.style.display="none";
+    // let backbutton =document.getElementById("back") 
+    // head.innerHTML="hii"
+    head.innerHTML=` <span class="flexdir"><span  onclick="backcard(${id})">back</span><span class="newwin">${tit.id}</span><span class="circle" onclick="additem()"  id="additem">+</span></span>
+     `;
+
+     
+     let popcar =document.getElementById("apper") 
+     popcar.style.display="flex"
+     let cardId = `cd${id}`;
+     let card =document.getElementById(cardId);
+     card.parentNode.isEqualNode(card);
+     data = data.filter(item => item.id != id);
+     popcar.innerHTML=`<samp class="cards" id=cdss${id}>${card.innerHTML}</samp>`;    
+    
+    
+    
+     //  card.innerHTML=popcar.innerHTML
+    //  coadop =`
+    // <nav class="cards" id="cd${id}"><p id="${tit}" onclick="openwindow(${id},${tit})"> ${tit.id}</p><hr>
+    // <p id="addtk${id}"><p>
+    // <span class="c1 c2" id="del${id}"  onclick="delcard(${id})">
+    // d</span>
+    // <span class="c1" id="${id}" id="addtask${id}" onclick="addtask(${id})">+</span></nav>`   
+    
+    // popcar.innerHTML = coadop
+
+    // let po =document.getElementById("card") 
+    // po.style.display="none"
+}
+
+function backcard(id){
+    
+    let head = document.getElementById("head")
+    head.style.opacity=1;
+    let cards = document.getElementById(`cd${id}`)
+    cards.style.opacity=1;
+    let popcar =document.getElementById("apper") ;
+    cards.innerHTML=`<nav >${popcar.innerHTML}</nav>`
+
+    console.log(popcar);
+    // popcar.style.display="flex"
+    let po =document.getElementById("card") 
+    po.style.display="flex"
+//     const cardId = `cd${id}`;
+// const card =document.getElementById(cardId);
+// card.parentNode.removeChild(card);
+// data = data.filter(item => item.id != id);
+
+// card.parentNode.appendChild(popcar);
+}   
+
+
+
+
+function back(id){
+    let head = document.getElementById("head")
+    head.innerHTML=`<span class="bold" >TASKS</span> LIST<span  onclick="backcard(${id})">back</span>
+    <spam class="add">
+        <span class="circle" onclick="additem()" id="additem">+</span> Add Item</spam> `;
+        let popcar =document.getElementById("apper") 
+
+    //  popcar.style.display="none"
+     const cardId = `cd${id}`;
+     const card =document.getElementById(cardId);
+     card.parentNode.replaceChild(card);
+     data = data.filter(item => item.id != id);
+     card.pop(popcar)
+}
+
+function addwinback() {
+        
+    let popcards =document.getElementById("card") 
+    let coadop ="";  
+          
+for ( let index = 0; index < data.length; index ++) {
+
+if(index <= data.length){
+console.log(data[index].title);
+// console.log("l "+data.length);
+// console.log(index);
+titl =data[index].title;
+id1=data[index].id;
+coadop =`
+<nav class="cards" id="cd${data[index].id}"><p id="${titl}" onclick="openwindow(${id1},${titl})"> ${data[index].title}</p><hr>
+<p id="addtk${data[index].id}"><p>
+<span class="c1 c2" id="del${data[index].id}"  onclick="delcard(${data[index].id})">
+d</span>
+<span class="c1" id="${data[index].id}" id="addtask${data[index].id}" onclick="addtask(${data[index].id})">+</span></nav>`
+}
+
+}
+
+popcards.innerHTML =`<a>${coadop}</a>`
+
+}
+
+
+function addnewein(taskid){
+    let coaditem="";
+ for ( let i = 0; i < da.length; i++) {
+console.log("fffffffffffffff"+taskid);
+    if(i <= da.length){           
+coaditem +=`<p id="${da[i].id}${taskid}">
+<span id="new${da[i].id}${taskid}">
+${da[i].tit}<span>
+<span class="makerd" id="makeread${da[i].id}${taskid}"
+ onclick="makeread(${da[i].id},${taskid})">Make as read</span>
+ </p>`  
+
+    }
+   
+}
+add.innerHTML = coaditem; 
+
+ }
+
 
 
 
@@ -97,19 +233,22 @@ function delcard(id){
 const card =document.getElementById(cardId);
 card.parentNode.removeChild(card);
 data = data.filter(item => item.id != id);
-console.log(data);
+
 }
 
-function addtask(taskid){
-    let head = document.getElementById("head")
+function addtask(taskid){   
+    let head = document.getElementById("head")  
+    head.innerHTML=`<span class="bold" >TASKS</span> LIST
+    <spam class="add">
+        <span class="circle" onclick="additem()" id="additem">+</span> Add Item</spam> `;
     head.style.opacity=.1;
     let cards = document.getElementById("card")
     cards.style.opacity=.1;
-let add = document.getElementById(`addtk${taskid}`)
+let add = document.getElementById(`${taskid}`)
 let pop1 =document.getElementById("todono")  
 pop1.style.display="flex"
-console.log("HI"+taskid);
-pop1.innerHTML=`
+    console.log(taskid);
+pop1.innerHTML =`
     <nav  class="addview" id="newtripcd">
     <nav>Add New Task</nav><br>
     <input type="text" class="tex" id="textsfortask" placeholder="Add New Task">
@@ -121,7 +260,9 @@ pop1.innerHTML=`
 
 
 
+
 function cancel(){
+    
     let head = document.getElementById("head")
     head.style.opacity=1;
     let cards = document.getElementById("card")
@@ -145,7 +286,7 @@ function cardstask(taskid){
         tit:newtext,     
     }
     
-    console.log(it);
+
     if (newtext||it.tit) {
       
         da.push(it);  
@@ -159,40 +300,42 @@ function cardstask(taskid){
      function additem(taskid){
         let coaditem="";
      for ( let i = 0; i < da.length; i++) {
-       
-        if(i <= da.length){   
-            console.log(taskid,da[i].id);        
-    coaditem +=`<p id="${da[i].id}${taskid}">
+        // let head = document.getElementById("head")
+        // head.style.opacity=1;
+        // let cards = document.getElementById(`cd${taskid}`)
+        // cards.style.opacity=1;
+        // let popcar =document.getElementById("apper") ;
+        // cards.innerHTML=`<nav >${popcar.innerHTML}</nav>`
+        if(i <= da.length){           
+    coaditem =`<p id="${da[i].id}${taskid}">
     <span id="new${da[i].id}${taskid}">
     ${da[i].tit}<span>
-    <span class="makerd" id="makeread${da[i].id}${taskid}" onclick="makeread(${da[i].id},${taskid})">Make as read</span></p>`  
-    add.innerHTML=coaditem; 
-    
+    <span class="makerd" id="makeread${da[i].id}${taskid}"
+     onclick="makeread(${da[i].id},${taskid})" >Make as read</span>
+     </p>`  
+   
         }
-
        
-
-
     }
+    add.innerHTML +=coaditem; 
     
-  
      }
     
 }
-
+    
 function makeread(id,taskid){
     let mr = document.getElementById(`makeread${id}${taskid}`)
     mr.style.display="none"
   let tk = document.getElementById(`new${id}${taskid}`)
-  console.log(tk.innerText);
-  console.log(tk);
+
   tk.style.color="red"
   tk.style.textDecoration="line-through"
 
-  console.log(da);
+  
+  let popcar =document.getElementById("apper") ;
+  tk.innerHTML=`<nav >${tk.innerHTML}</nav>`
+
+
   data = data.filter(item => item.id != id);
 //   da = da.filter(it => it.id != id);
 }
-
-
-// class="contact${contact.done?"checked":""}"
