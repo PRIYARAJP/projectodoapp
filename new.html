@@ -6,20 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>new one</title>
     <style>
+        /* body formate */
         body{
             color: white;
             background-color: black;
             font-size: 40px;
-            font-family: 'Roboto', sans-serif;
+            font-family:'Times New Roman', Times, serif;
             margin: 40px;
         }
+        /* for bold the task name */
         .bold{
             font-size: 40px;
             font-weight: bolder;
         }
+        /* add task button view on right */
         .add{
             float: right;
         }
+        /* circle in + button */
         .circle{
         box-sizing: border-box;
         background-color: rgb(4, 169, 251);
@@ -30,6 +34,7 @@
         border: #000 2px solid;
         padding: 0px 10px; 
        }
+        /* for add task popup in js */
        .addview{ 
         padding: 20px;
         width: 400px;
@@ -39,12 +44,7 @@
         color:orange;
         flex-direction: column;
        }
-       footer{
-        display: flex;
-            justify-content: center;
-            align-items: center;
-           
-       }
+       /* for add task popup button  in js */
        button{
         padding: 10px 30px;
         margin: 30px;
@@ -53,6 +53,7 @@
         background-color: orange;
         color: white;
        }
+         /* for add task popup text align  in js */
        .tex{
         text-align: center;
         width: 300px;
@@ -60,61 +61,30 @@
         border: solid black 3px;
         border-radius: 10px;
        }
+       /* for card size */
        .cards{
         border: solid black 3px;
         border-radius: 10px;
         width: 250px;
-        height: 300px;
+        height: 400px;
         background-color: white;
-        color: black;
+        color: red;
         font-size: 25px;
         text-align: center;
         margin: 20px;
+        overflow-x: auto;
+       
        
        }
-       
-       .cardsalin{
-        background-color: aqua;
-        text-align: center;
-        display: flex;
-            justify-content: center;
-            align-items: center;     
-       }
-       .cardsalin2{
-        background-color: aqua;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;     
-       }
-       .newline{
-        font-size: large;
-       }
-       .circle1{
-        position: relative;
-        bottom: 60px;
-        right: -121px;
-        font-size: 20px;
-        
-       }
-       .circle2{
-        
-        position: relative;
-        bottom: 30px;
-        right: -20px;
-        font-size: 20px;
-       }
-        .opc{
-            opacity: 1;
-            background-color: green;
-            z-index:-3;
-        }
+   
+        /* for todo contant */
         .todono{
             display: flex;
             align-items: center;
             justify-content: center;
            text-align: center;
         }
+        /* for cord alignment like container */
         .flexdir{
             display: flex;            
             flex-wrap: wrap;
@@ -122,6 +92,7 @@
             align-items: center;
          
         }
+        /* for add button in cord */
         .c1{
             box-sizing: border-box;
         background-color: rgb(4, 169, 251);
@@ -133,9 +104,11 @@
         padding: 0px 5px; 
         margin: 10px;
         }
+          /* for delete button in cord */
         .c2{
             background-color: red;
         }
+        /* for mark button in cord */
         .makerd{
             background-color: rgb(4, 169, 251);
             font-size: small;
@@ -145,20 +118,46 @@
             border-radius: 20px;
             color: white;
         }
+        
+        .newwin{
+            
+            text-align: center;
+        }
+        .appers{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+           text-align: center;
+        }
+        hr{
+            background-color: blue;
+          
+        }
+     
     </style>
 </head>
 <body>
   <header id="head">
-   <span class="bold">TASKS</span> LIST
+   <span class="bold" >TASKS</span> LIST
     <spam class="add">
         <span class="circle" onclick="additem()" id="additem">+</span> Add Item</spam>          
 </header>
+
 <!-- <nav id="hid">Adding Items are : </nav> -->
-<br>
+<br><br><br>
+<div class="appers apper"  id="apper"></div>
+
     <div class="todono" id="todono">No Items in the todo list</div>
     <div class="flexdir" id="card">
         
 </div>
+<!-- <samp class="cards"></samp> -->
+    <!-- <span class="flexdir"><span>back</span><span class="newwin">${tit.id}</span><span class="circle" onclick="additem()" id="additem">+</span></span> -->
+
+
+
+
+
     <script src="./new.js"></script>
 </body>
 </html>
