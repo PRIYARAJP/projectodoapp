@@ -96,6 +96,7 @@
     border: white 2px solid;
     padding: 0px 5px; 
     margin: 10px;
+    
     }
       /* for delete button in cord */
     .c2{
@@ -125,18 +126,18 @@
        
     } */
     hr{
-        background-color: blue;
+        background-color: black;
+        height: 2px;
       
     }
   .newbx{
     border-radius: 10px;
-    width: 300px;
-    height: 400px;
+    width: 280px;
+    height: 350px;
     background-color: white;
     color: black;
     overflow-y: auto;
     flex-direction: column;
-    
     
   }
   .con{
@@ -144,4 +145,12 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+  }
+  .formate{
+    
+    width: 100px;
+    height: 40px;
+    position: sticky;
+    left : 150px;
+    top :280px
   }
