@@ -87,9 +87,10 @@ coadop =`
 <nav class="cards" id="cd${data[index].id}">
 <p id="${titl}" onclick="openwindow(${id1},${nn})" value="5" id="n${id1}">${nn}</p><hr>
 <p id="addtk${data[index].id}"><p>
+<div class="formate">
 <span class="c1 c2" id="del${data[index].id}"  onclick="delcard(${data[index].id})">
 d</span>
-<span class="c1" id="${data[index].id}" id="addtask${data[index].id}" onclick="addtask(${data[index].id})">+</span></nav>`
+<span class="c1" id="${data[index].id}" id="addtask${data[index].id}" onclick="addtask(${data[index].id})">+</span></div></nav>`
 
     }
    
