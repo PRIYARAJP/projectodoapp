@@ -18,7 +18,8 @@ function additem(){
     pop1.innerHTML=`
     <nav  class="addview"  >
     <nav>Add New List</nav><br>
-    <input type="text" class="tex" id="texts" placeholder="Add New List">
+    <input type="text" class="tex" id="texts"
+     placeholder="Add New List">
     <nav class="ac">
     <button onclick="card1()"  id="card1" >ADD</button>
     <button onclick="cancel()" >Cancel</button></nav>
@@ -85,7 +86,7 @@ let nn = titl
 
 coadop =`
 <nav class="cards" id="cd${data[index].id}">
-<p id="${titl}" onclick="openwindow(${id1},${nn})" value="5" id="n${id1}">${nn}</p><hr>
+<p id="${titl}" value="${data[index].title}"  onclick="openwindow(${id1},this.getAttribute('value'))"  id="n${id1}">${nn}</p><hr>
 <p id="addtk${data[index].id}"><p>
 <div class="formate">
 <span class="c1 c2" id="del${data[index].id}"  onclick="delcard(${data[index].id})">
@@ -104,11 +105,11 @@ d</span>
 /* open new window click on heading tag  */
 
 function openwindow(id,tit){
-    let a=5;
+   
     let head = document.getElementById("head")
 
     head.innerHTML=` <span class="flexdir"><span  onclick="backcard(${id})">back
-    </span><span class="newwin" id="newwind">${tit.id}</span>
+    </span><span class="newwin" id="newwind"><h1>${tit}</h1></span>
     <span class="circle" onclick="adddwin(${id})" id="additem">+</span></span>
      `;
 
@@ -119,9 +120,7 @@ function openwindow(id,tit){
      card.parentNode.isSameNode(card);
     const mii=card.innerHTML;
     
-     popcar.innerHTML =mii;    
-     
-   
+     popcar.innerHTML =mii;       
      data = data.filter(item => item.id != id);
     let po =document.getElementById("card") 
     po.style.display="none"
@@ -149,6 +148,7 @@ function adddwin(id){
 }
 
 /* back and update changes */
+
 function backcard(id){
  
     let head = document.getElementById("head")
@@ -164,6 +164,7 @@ function backcard(id){
     let po =document.getElementById("card") 
     po.style.display="flex"
     popcar.style.display="none"
+    popcar.innerHTML="bb"
 }   
 
 /* delete cord  */
@@ -172,10 +173,15 @@ function delcard(id){
     head.style.opacity=1;
     let cards = document.getElementById("card")
     cards.style.opacity=1;
+    cards.style.display="flex"
     const cardId = `cd${id}`;
 const card =document.getElementById(cardId);
 card.parentNode.removeChild(card);
 data = data.filter(item => item.id != id);
+let popcar =document.getElementById("apper");
+popcar.style.display="none"
+
+backcard(id);
 
 }
 
