@@ -10,15 +10,15 @@ function additem(){
     let pop1 =document.getElementById("todono")  
     pop1.style.display="flex"
     let cards = document.getElementById("card")
-    cards.style.opacity=.1;
+    cards.style.display="none"
     // pop1.style.textAlign="center"
     
     // let backgr =document.getElementById("opacitych")  
-    
+    head.style.opacity=.1;
     pop1.innerHTML=`
     <nav  class="addview"  >
     <nav>Add New List</nav><br>
-    <nav>
+    <nav >
     <input type="text" class="tex" id="texts" placeholder="Add New List">
     </nav><br><nav class="ac">
     <button onclick="card1()"id="card1" >ADD</button>
@@ -82,12 +82,15 @@ function card1(){
 titl =data[index].title;
 id1=data[index].id;
 let nn = titl
-// .replaceAll(" ","mmmmmmm");
+
 
 coadop =`
-<nav class="cards" id="cd${data[index].id}">
-<p id="${titl}" onclick="openwindow(${id1},${nn})" value="5" id="n${id1}">${nn}</p><hr>
+<nav class="cards" id="cd${data[index].id}"><div class="stricky">
+<p  id="${titl}" onclick="openwindow(${id1},${nn})" value="5" id="n${id1}">${nn}</p><hr>
+</div>
+
 <p id="addtk${data[index].id}"><p>
+
 <div class="formate">
 <span class="c1 c2" id="del${data[index].id}"  onclick="delcard(${data[index].id})">
 d</span>
@@ -126,7 +129,7 @@ function openwindow(id,tit){
      data = data.filter(item => item.id != id);
     let po =document.getElementById("card") 
     po.style.display="none"
-    console.log(a);
+
 }
 
 /* adding new cord and update details from heading page  */
@@ -188,14 +191,16 @@ function addtask(taskid){
     
     head.style.opacity=.1;
     let cards = document.getElementById("card")
-    cards.style.opacity=.1;
+    cards.style.display="none"
 let add = document.getElementById(`${taskid}`)
 let pop1 =document.getElementById("todono")  
 pop1.style.display="flex"
 pop1.innerHTML =`
     <nav  class="addview" id="newtripcd">
     <nav>Add New Task</nav><br>
+    <div >
     <input type="text" class="tex" id="textsfortask" placeholder="Add New Task">
+    </div>
     <nav class="ac">
     <button onclick="cardstask(${taskid})" id="card1" >ADD</button>
     <button onclick="cancel()" >Cancel</button></nav>
@@ -216,9 +221,9 @@ function cancel(){
 /* for insert task inside card */
 const da=[];
 function cardstask(taskid){
-   
+
     let newval =document.getElementById("n${id1}") 
-    console.log("vvvvvvvvvvvvvvvvvvv"+newval);
+    
     let poc =document.getElementById("newwind")
 // console.log("wwwddddddddddd"+poc);
 /* condition for view cord */
@@ -226,14 +231,14 @@ function cardstask(taskid){
         let popcarer =document.getElementById("apper") 
         popcarer.style.display="block"
         let cards = document.getElementById("card")
-        cards.style.opacity=1;
+        cards.style.display="flex";
        
     }
     else if(poc == null) {
         let popcarer =document.getElementById("apper") 
         popcarer.style.display="none"
         let cards = document.getElementById("card")
-        cards.style.opacity=1;
+        cards.style.display="flex";
     }
 
     let head = document.getElementById("head")
