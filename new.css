@@ -107,6 +107,12 @@
     margin: 10px;
     
     }
+    .stricky{
+      padding-top: 5px;
+      position: sticky;
+      top: 0;
+      background-color: white;
+    }
     .c1:hover{
       font-size: .6cm;
       background-color: rgb(37, 4, 251);
@@ -132,8 +138,11 @@
       background-color: rgb(37, 4, 251);
     }
     .newwin{
-        
+        position: static;
+       
+        top:20px ;
         text-align: center;
+
     }
     /* .appers{
         display: flex;
@@ -170,7 +179,9 @@
     height: 40px;
     position: sticky;
     left : 150px;
-    top :280px
+    top :280px;
+    bottom: 0;
+    
   }
   @media only screen and (max-width: 460px ){
     .addview{ 
@@ -189,25 +200,16 @@
      
      }
      .tex{
-      /* box-sizing: border-box;
-      border: solid black 3px;
-      border-radius: 10px;
-      width: 200px;
-      height: 40px;
-      background-color: white;
-      color: black;
-      font-size: 15px;
+      
       text-align: center;
-      align-items: center;
-      margin: 0px;
-      overflow-x: auto;
-      display: flex; */
-      text-align: center;
-      width: 200px;
+      width: auto;
       height: 35px;
       border: solid black 3px;
       border-radius: 10px;
       margin: 0px;
+      
+     }
+     .texers{
       
      }
      button{
